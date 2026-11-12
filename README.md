@@ -2,7 +2,9 @@
 
 > **Course:** Advanced Programming Practice (APP) — College Project  
 > **Team Size:** 3 Members
-> **SUDEV KRISHNA(RA2511026050060), ABHISHEK M V(RA2511026050005), ADWIN A MENACHERY(RA2511026050026)
+> SUDEV KRISHNA(RA2511026050060)
+> ABHISHEK M V(RA2511026050005)
+> ADWIN A MENACHERY(RA2511026050026)
 >
 > 
 > **Architecture:** Distributed Client–Server Architecture (Raw TCP Sockets + Custom 4-Byte Binary Framing)  
