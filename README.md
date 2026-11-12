@@ -1,7 +1,8 @@
 # Skillora: Distributed Campus Placement Preparation & Evaluation System with Symbolic Algorithmic Profiling
 
 > **Course:** Advanced Programming Practice (APP) — College Project  
-> **Team Size:** 4 Members  
+> **Team Size:** 3 Members
+> **SUDEV KRISHNA(RA2511026050060), ABHISHEK M V(RA2511026050005), ADWIN A MENACHERY(RA2511026050026)
 > **Architecture:** Distributed Client–Server Architecture (Raw TCP Sockets + Custom 4-Byte Binary Framing)  
 > **Tech Stack:** Python 3.10+, Tkinter / CustomTkinter (Modern Light Theme), SymPy, Multiprocessing, MySQL (with Automatic SQLite Fallback)  
 > **API Policy:** 100% Offline Self-Contained (Zero Cloud Services, Zero External APIs)
