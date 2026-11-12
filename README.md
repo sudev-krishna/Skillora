@@ -3,13 +3,15 @@
 > **Course:** Advanced Programming Practice (APP) — College Project  
 > **Team Size:** 3 Members
 > **SUDEV KRISHNA(RA2511026050060), ABHISHEK M V(RA2511026050005), ADWIN A MENACHERY(RA2511026050026)
+>
+> 
 > **Architecture:** Distributed Client–Server Architecture (Raw TCP Sockets + Custom 4-Byte Binary Framing)  
 > **Tech Stack:** Python 3.10+, Tkinter / CustomTkinter (Modern Light Theme), SymPy, Multiprocessing, MySQL (with Automatic SQLite Fallback)  
 > **API Policy:** 100% Offline Self-Contained (Zero Cloud Services, Zero External APIs)
 
 ---
 
-## 🏆 Project Overview
+## Project Overview
 
 **Skillora** is an offline, distributed campus recruitment preparation and evaluation platform designed specifically for college students preparing for Indian on-campus and off-campus recruitment drives (Tiers 1–3: Amazon, Microsoft, Zoho, TCS, Infosys, Wipro, Cognizant, Accenture).
 
@@ -22,7 +24,7 @@ Unlike basic CRUD applications, Skillora introduces an **Innovative Dual-Engine 
 
 ---
 
-## 📋 Syllabus Compliance Matrix
+## Syllabus Compliance Matrix
 
 | Course Syllabus Requirement | Implementation in Skillora | Source Code File |
 | :--- | :--- | :--- |
@@ -36,7 +38,7 @@ Unlike basic CRUD applications, Skillora introduces an **Innovative Dual-Engine 
 
 ---
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 ### 1. Prerequisites & Dependencies
 Skillora requires Python 3.10+ (tested on Python 3.13):
@@ -67,7 +69,7 @@ python run_client.py --offline
 
 ---
 
-## 🧪 Running the Automated Test Suite
+## Running the Automated Test Suite
 
 Skillora includes **383 automated tests across 24 test suites** covering unit tests, adversarial stress tests, and live TCP client-server integration:
 
@@ -84,7 +86,7 @@ python tests/verify_m6_navigation_stress.py
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 Skillora/
@@ -146,30 +148,3 @@ Skillora/
     ├── test_pipeline.py            # Pure functional currying, map, filter, reduce tests
     ├── test_interview_bot.py       # AST syntax checking & keyword scoring tests
     └── verify_m6_navigation_stress.py # View lifecycle & latency stress tests
-```
-
----
-
-## 👥 Viva Defense Guide (Role Allocation for 4 Team Members)
-
-During the final viva and project presentation, each member can independently defend their assigned module:
-
-### Member 1: Networking & Client-Server Socket Architecture
-* **Key Topics:** Raw TCP sockets, 4-byte big-endian framing (`struct.pack('!I', length)`), why HTTP/web frameworks were avoided, thread-safe connection pooling, non-blocking background daemon thread, and graceful socket teardown.
-* **Viva Question:** *"How did you prevent UI freezing when communicating over sockets?"*
-* **Defense:** *"The Tkinter client does not make blocking socket calls on the main thread. A background daemon thread reads packets from the TCP socket and places them into a thread-safe `queue.Queue`. The Tkinter event loop polls the queue via `root.after()` to update the UI at a fluid 60 FPS."*
-
-### Member 2: Modern Desktop GUI & User Experience (Tkinter)
-* **Key Topics:** CustomTkinter and Tkinter widget composition, strict light-theme design system (Slate `#F8FAFC`, White `#FFFFFF` cards, Blue `#2563EB` accents), zero-flicker view stacking via `tkraise()`, and view transition optimization (achieving 3.9ms latency via state-keyed dirty checking and in-place label recycling).
-* **Viva Question:** *"How did you achieve responsive tab switching without UI stutter?"*
-* **Defense:** *"Instead of destroying and re-instantiating card widgets whenever a student switches views, we implemented a 9-dimensional state hashing and in-place label recycling mechanism. This reduced view transition latency from 471ms to 3.9ms, an over 100x speedup."*
-
-### Member 3: SymPy Algorithmic Profiler & Multiprocessing Sandbox
-* **Key Topics:** Symbolic recurrence equation solving using `sympy.rsolve`, Master Theorem canonicalization, isolated `multiprocessing.Process` execution sandbox, 3-stage watchdog loop termination for rogue student code, and empirical log-log linear regression for divergence detection.
-* **Viva Question:** *"Why did you use Multiprocessing instead of Multithreading for executing student code?"*
-* **Defense:** *"Python's Global Interpreter Lock (GIL) prevents threads from being forcefully killed if student code contains an infinite loop (`while True:`). By using `multiprocessing.Process`, we isolate candidate code in a separate OS process, enforce a strict monotonic timeout, and safely terminate rogue worker processes without crashing the socket server."*
-
-### Member 4: Pure Functional Programming Pipeline & Offline Interview Bot
-* **Key Topics:** Pure functions, curried predicates, `filter` company matching, `map` dimensional scoring, and `reduce` Placement Readiness Index (PRI) aggregation; 3-tier offline interview evaluation combining whole-word regex matching (50%), lexical structure (20%), and Python Abstract Syntax Tree (`ast.NodeVisitor`) analysis (30%) with zero external APIs.
-* **Viva Question:** *"How is Functional Programming genuinely demonstrated in the project?"*
-* **Defense:** *"Our placement eligibility engine is built as a pure, side-effect-free pipeline. Student profiles and company criteria use immutable frozen dataclasses and `MappingProxyType`. We curry the eligibility predicate and pass it to `filter`, transform dimensional scores with `map`, and compute the composite readiness score with `functools.reduce` without mutating external variables."*
